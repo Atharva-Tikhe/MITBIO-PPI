@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <!--    serving static files-->
+    <servlet>
+        <servlet-name>SQLResultToJSON</servlet-name>
+        <servlet-class>ResultSetProcessor.SQLResultToJSON</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SQLResultToJSON</servlet-name>
+        <url-pattern>/converter/resset-to-json</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/static/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Home</servlet-name>
+        <jsp-file>/index.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Home</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <jsp-file>/normalSearch.jsp</jsp-file>
+    </servlet>
+    <!--mapping-->
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/proteinSearch</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SearchResults</servlet-name>
+        <jsp-file>/norm.jsp</jsp-file>
+    </servlet>
+    <!--mapping-->
+    <servlet-mapping>
+        <servlet-name>SearchResults</servlet-name>
+        <url-pattern>/results</url-pattern>
+    </servlet-mapping>
+</web-app>
