@@ -4,7 +4,13 @@
  * and open the template in the editor.
  */
 
-
+/*
+ * 
+ * Author : Atharva Tikhe
+ * 
+ * 
+ * 
+ */
 
 var searchButton = document.getElementById('submit');
 var searchedProtein = document.getElementById('t1');
@@ -22,8 +28,8 @@ searchButton.addEventListener('click', async function (event){
     const proteinNames = await getData('http://localhost:8084/PPI-Atharva/converter/resset-to-json');
     
     
-    console.log(proteinNames)
-    console.log(searchedProtein.value)
+    console.log(proteinNames);
+    console.log(searchedProtein.value);
     
             const options = {
                 // isCaseSensitive: false,
@@ -38,7 +44,7 @@ searchButton.addEventListener('click', async function (event){
                 // useExtendedSearch: false,
                 // ignoreLocation: false,
                 // ignoreFieldNorm: false,
-                keys: ["pname", "proteina", "proteina"]
+                keys: ["pname", "proteina", "proteina", "inhibitor"]
               };
               
                const fuse = new Fuse(proteinNames, options);
