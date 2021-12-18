@@ -24,6 +24,7 @@
         
         <link rel="stylesheet" href="static/index.css">
         <link rel="stylesheet" href="static/normalSearch.css">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         
         
         <!--    SCRIPTS --------------------------------------------->  
@@ -31,20 +32,32 @@
         <!--<script type="text/javascript" src="static/js/resources/JSmol.GLmol.min.js"></script>--> 
         <script type="text/javascript" src="static/js/normalSearch.js" defer></script>
         <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" defer></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         
     </head>
     
     <body>
          
-        <div id="navbar">
+<!--        <div id="navbar">
             <a  href="/">Home</a>
             <a href="advanced2.jsp">Advanced Search</a>
             <a href="protein.jsp">Interactions</a>
             <a href="normsearch.jsp">Statistics</a>
             <a href="help.jsp">Help</a>
             <a href="contact.jsp">About us</a>
+        </div>-->
+        <nav  id="navbar" class="navbar flex mx-5 mb-6">
+        <div class="navbar-brand d-flex justify-content-center align-items-center mx-2 flex-wrap gap-3">
+            <img src="static/imgs/mitbio-logo.png" alt="MITBIO-logo"/>
+            <h5 class="font-size-14"> | Protein - Protein Interaction Web Portal </h5>
         </div>
-    
+        <a href="advanced2.jsp">Advanced Search</a>
+        <a href="protein.jsp">Interactions</a>
+        <a href="normsearch.jsp">Statistics</a>
+        <a href="help.jsp">Help</a>
+        <a href="contact.jsp">About us</a>
+    </nav>
         
 <!--       <table>
             <tr>
@@ -59,8 +72,7 @@
           <button  id="submit" name="submit">Go</button>
         </form>
 
-        <table style="  padding: 1px; width: 100%; height: 30.5%;   position: fixed; top: 40%; margin-left: -2px;  opacity: 0.75; ">
-           
+        <table id="count-table1" style=" padding: 1px; width: 100%; height: 30.5%;   position: fixed; top: 40%;  opacity: 0.75; ">
             <tr>
                 <%
                 Class.forName("com.mysql.jdbc.Driver");
@@ -72,14 +84,9 @@
                     int count1 = 0;
                     int c = 0;
                     String sql= "select proteinA ,count(proteinA) as count1 from main2 group by proteinA;";
-                    String sql2 ="select proteinB ,count(proteinB) as count2 from main2 group by proteinB;";
-//                    Class.forName("com.mysql.jdbc.Driver");
-//                    Connection con =(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/ppi", "root", "abtdbt2213");
-                    
+                    String sql2 ="select proteinB ,count(proteinB) as count2 from main2 group by proteinB;";                    
                     Statement st= (Statement)con.createStatement();
                     ResultSet rs = st.executeQuery(sql);
-                    
-                    
                     
             while(rs.next()){
                 String a1 = rs.getString(1);
@@ -100,7 +107,7 @@
             }
                      c = count+count1;
                      %>
-                     <th  onclick="javascript:navigate();">Proteins<br><%=c%><br> <img id="img1" style=" width: 200px; height: 180px; margin-left: -20px; margin-top: 3px; "  /></th>
+                     <th  onclick="javascript:navigate();">Proteins<br><%=c%><br></th>
                  <%
                      rs.close();
                     st.close();
@@ -134,7 +141,7 @@
                 count = count+1;
             }
                 %>
-                <th id="protein" onclick="location.href='protein.jsp' " style="align-content: center;">Interactions<br><%=count%><br><div id='jmol_div' style=" width: 200px; height: 180px; margin-right: -200px; margin-left: 90px; " ></div>
+                <th id="protein" onclick="location.href='protein.jsp' " style="align-content: center;">Interactions<br><%=count%><br>
               </th>
             
             <%
@@ -172,7 +179,8 @@
                     
                 
                 %>
-                <th id="inhibitor" onclick="javascript:navigate1();">Inhibitors<br><%=count%><br><img id="img2" style=" width: 200px; height: 180px;margin-top: 3px; "  /> </th>
+                <th id="inhibitor" onclick="javascript:navigate1();">Inhibitors<br><%=count%><br>
+                </th>
             </tr>
            
             
@@ -216,7 +224,7 @@
         </table>
                     
    
-                    <table style=" padding: 1px; width: 100%; height: 18.5%;   position: fixed;  top: 76%;;margin-left: -2px;  opacity: 0.85; ">
+                    <table style=" margin: 2em 2em; padding: 1px; width: 80%; height: 18.5%;   position: fixed;  top: 76%;  opacity: 0.85; ">
         <tr>
              <%
                try{

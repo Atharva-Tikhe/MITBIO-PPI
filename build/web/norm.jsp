@@ -400,7 +400,7 @@ vertical-align:top;
            int c = 0;
                 
                 String sql2 ="select * from main2 where PID=? or Disease=? or PDB_ID=? or pname=? or Inhibitor=? or proteinA=? or proteinB=?;  ";
-                Class.forName("com.mysql.jdbc.Driver");
+//                Class.forName("com.mysql.jdbc.Driver");
 //                Connection con =(Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/ppi", "root", "abtdbt2213");
             System.out.println("EXECUTE the query");
                     //String query = "select* from main2 where '"+a1+"'=? '"+o+ "' '"+a2+"'=?'"+o2+"' '"+a3+"'=?";

@@ -7,10 +7,12 @@
         </session-timeout>
     </session-config>
     <!--    serving static files-->
+
     <servlet>
         <servlet-name>SQLResultToJSON</servlet-name>
         <servlet-class>ResultSetProcessor.SQLResultToJSON</servlet-class>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>SQLResultToJSON</servlet-name>
         <url-pattern>/converter/resset-to-json</url-pattern>
@@ -19,6 +21,7 @@
         <servlet-name>default</servlet-name>
         <url-pattern>/static/*</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>Home</servlet-name>
         <jsp-file>/index.jsp</jsp-file>
@@ -27,6 +30,7 @@
         <servlet-name>Home</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>Search</servlet-name>
         <jsp-file>/normalSearch.jsp</jsp-file>
@@ -36,6 +40,7 @@
         <servlet-name>Search</servlet-name>
         <url-pattern>/proteinSearch</url-pattern>
     </servlet-mapping>
+    
     <servlet>
         <servlet-name>SearchResults</servlet-name>
         <jsp-file>/norm.jsp</jsp-file>
@@ -45,4 +50,37 @@
         <servlet-name>SearchResults</servlet-name>
         <url-pattern>/results</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>newJsp</servlet-name>
+        <jsp-file>/newjsp1.jsp</jsp-file>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>newJsp</servlet-name>
+        <url-pattern>/newjsp1.jsp</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>sequence</servlet-name>
+        <jsp-file>/sequence.jsp</jsp-file>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>sequence</servlet-name>
+        <url-pattern>/sequence.jsp</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>docking</servlet-name>
+        <jsp-file>/dock.jsp</jsp-file>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>docking</servlet-name>
+        <url-pattern>/docking</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
